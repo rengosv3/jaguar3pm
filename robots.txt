@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://breakcode4d.my/sitemap.xml

@@ -1,0 +1,65 @@
+=== TUTORIAL SETUP VPS UNTUK GDLOTTO4D ===
+
+1. LOGIN VPS
+---------------------
+ssh administrator@<IP_VPS>
+
+2. INSTALL PYTHON & PIP (jika belum)
+---------------------
+sudo apt update
+sudo apt install python3 python3-pip -y
+
+3. INSTALL VIRTUAL ENV (pilihan)
+---------------------
+sudo pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+
+4. INSTALL STREAMLIT & LIBRARY
+---------------------
+cd ~/gdlotto4d
+pip install -r requirements.txt
+
+5. JALANKAN STREAMLIT APP
+---------------------
+streamlit run gdlotto4d.py --server.port 5000 --server.address 0.0.0.0
+
+streamlit run gdlotto4d.py --server.address 127.0.0.1 --server.port 5000 --server.baseUrlPath app
+
+streamlit run gdlotto4d.py --server.port=5000
+
+6. BUKA DI MOBILE/PC
+---------------------
+http://<IP_VPS>:5000
+
+Contoh: http://103.145.XX.XX:5000
+
+7. BUKA FIREWALL UNTUK PORT 5000 (jika perlu)
+---------------------
+sudo ufw allow 5000
+sudo ufw reload
+
+8. KEMASKINI DRAW (dalam sidebar app)
+---------------------
+- Klik "KEMASKINI DRAW" untuk update result terkini
+- Pilih hari (contoh: 5 hari kebelakang)
+- Tick "Update base juga" jika mahu update base
+
+9. STRUKTUR FAIL PROJEK
+---------------------
+gdlotto4d/
+├── gdlotto4d.py
+├── utils.py
+├── draw_scraper.py
+├── strategies.py
+├── prediction.py
+├── wheelpick.py
+├── analisis.py
+├── requirements.txt
+└── data/
+    ├── draws.txt
+    └── base.txt (autogen)
+
+10. JALAN SCRIPT SAHAJA TANPA STREAMLIT (optional)
+---------------------
+python3 draw_scraper.py
